@@ -31,8 +31,6 @@ app.use('/api/v2', v2Routes);
 app.use('*', notFoundHandler);
 app.use(errorHandler);
 
-
-// an entire object that is named "app", could be named anything and then imported into the root index.js as app. 
 module.exports = {
   app,
   start: (port) => {

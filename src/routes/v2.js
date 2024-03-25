@@ -21,10 +21,11 @@ router.param('model', (req, res, next) => {
   }
 });
 
+// access to bearer to get through the first checkpoint
 router.get('/:model', handleGetAll);
 router.get('/:model/:id', handleGetOne);
-router.post('/:model',checkAuthorization('create'), handleCreate);
-router.put('/:model/:id',checkAuthorization('update'), handleUpdate);
+router.post('/:model', checkAuthorization('create'), handleCreate);
+router.put('/:model/:id', checkAuthorization('update'), handleUpdate);
 router.delete('/:model/:id', checkAuthorization('delete'), handleDelete);
 
 async function handleGetAll(req, res) {
@@ -34,7 +35,7 @@ async function handleGetAll(req, res) {
 
 async function handleGetOne(req, res) {
   const id = req.params.id;
-  let theRecord = await req.model.get(id)
+  let theRecord = await req.model.get(id);
   res.status(200).json(theRecord);
 }
 
@@ -47,7 +48,7 @@ async function handleCreate(req, res) {
 async function handleUpdate(req, res) {
   const id = req.params.id;
   const obj = req.body;
-  let updatedRecord = await req.model.update(id, obj)
+  let updatedRecord = await req.model.update(id, obj);
   res.status(200).json(updatedRecord);
 }
 
@@ -56,6 +57,5 @@ async function handleDelete(req, res) {
   let deletedRecord = await req.model.delete(id);
   res.status(200).json(deletedRecord);
 }
-
 
 module.exports = router;
