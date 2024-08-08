@@ -15,7 +15,7 @@ const logger = require('./middleware/logger.js');
 const app = express();
 
 // App Level MW
-app.use(cors({origin: 'http://localhost:5173'}));
+app.use(cors({origin: 'https://brandon-mizutani-storefront.netlify.app'}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
